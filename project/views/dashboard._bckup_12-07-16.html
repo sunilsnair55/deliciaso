@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp"ng-controller="myCtrl">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Deliciaso | </title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom styling plus plugins -->
+  <link rel="stylesheet" href="angular/angular-material.css">
+  <link href="css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.3.css" />
+  <link href="css/icheck/flat/green.css" rel="stylesheet" />
+  <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" type="text/css" href="angular-ui-grid/ui-grid.min.css"></script>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="angular/angular.min.js"></script>
+<script src="angular/angular-animate.js"></script>
+<script src="angular/angular-aria.js"></script>
+<script src="angular/angular-material.js"></script>
+<script src="angular-ui-grid/ui-grid.min.js"></script>
+
+
+
+
+
+
+  <script src="js/nprogress.js"></script>
+  <script src="js/validator/validator.js"></script>
+<style>
+.grid {
+  width: 1000px;
+  height: 250px;
+}
+.error
+{
+  color:red;
+}
+</style>
+
+</head>
+
+
+<body class="nav-md">
+
+  <div class="container body">
+
+
+    <div class="main_container">
+
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="/order" class="site_title" style="height:106px;padding-left:0px;"><img src="images/deliciaso_logo.png" style="height:86px;width:134px;" class="img-circle profile_img"></a>
+          </div>
+          <div class="clearfix"></div>
+
+          <!-- menu prile quick info -->
+          <div class="profile" style="margin-top:50px;">
+            <div class="profile_pic">
+              <img src="images/avatar.ico" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <h2>Admin</h2>
+            </div>
+          </div>
+          <!-- /menu prile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+            <div class="menu_section">
+              <h3>&nbsp;</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="/order">New Order</a>
+                    </li>
+                    <li><a href="/payment">Payments</a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+
+        <div class="nav_menu">
+          <nav class="" role="navigation">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/avatar.ico" alt="">Admin
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                  <li><a href="javascript:;">  Profile</a>
+                  </li>
+                  <li><a href="/"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+      <!-- /top navigation -->
+
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+
+        <!-- top tiles -->
+        <div class="row tile_count">
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Total Customers</span>
+              <div class="count">0</div>
+
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-clock-o"></i>Total Cakes Sold</span>
+              <div class="count">0</div>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Completed Payments</span>
+              <div class="count green">0</div>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Due Payments</span>
+              <div class="count">0</div>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
+              <div class="count">0</div>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Today`s Collection</span>
+              <div class="count">0</div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /top tiles -->
+        <br /><br />
+
+        <div class="alert alert-success" style="display:none;" id="AlertSuccess">
+          <strong style="text-align:center;">No Data Available</strong>
+        </div>
+        <!-- <div class="row" >
+          <div class="col-md-3"> &nbsp;</div>
+          <div class="col-md-6">
+
+          </div>
+          <div class="col-md-3">&nbsp;</div>
+        </div> -->
+
+
+        <div class="row" id="NewOrder" >
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>Make New Order </h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+
+                <!-- Smart Wizard -->
+
+                <div id="wizard" class="form_wizard wizard_horizontal">
+                  <ul class="wizard_steps">
+                    <li>
+                      <a href="#step-1" style="text-decoration: none;">
+                        <span class="step_no">1</span>
+                        <span class="step_descr">
+                                          Customer Details<br />
+
+                                      </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#step-2" style="text-decoration: none;">
+                        <span class="step_no">2</span>
+                        <span class="step_descr ">
+                                          Product Menu<br />
+
+                                      </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#step-3" style="text-decoration: none;">
+                        <span class="step_no">3</span>
+                        <span class="step_descr ">
+                                        Delivery Details<br />
+
+                                      </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#step-4" style="text-decoration: none;">
+                        <span class="step_no">4</span>
+                        <span class="step_descr">
+                                          Order Summary<br />
+
+                                      </span>
+                      </a>
+                    </li>
+
+                  </ul>
+                  <div id="step-1" class="form1dd" >
+
+
+                    <form class="form-horizontal form-label-left" style="min-height: 400px;" >
+                      <h2 class="StepTitle">&nbsp;</h2>
+
+                      <div class="alert alert-danger"  id="Step1Validation" style="display:none;text-align:center;">
+                      <strong id="Step1Error"></strong>
+                      </div>
+                      <div class="alert alert-success" style="display:none;text-align:center;" id="QuickSaveSuccess">
+                        <strong id="QuickSaveSuccessMessage"></strong>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mobile <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="OrderMobile" name="last-name"  class="form-control col-md-7 col-xs-12" ng-model="customer.Mobile" ng-blur="search()" ng-required>
+                        </div>
+
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" class="form-control col-md-7 col-xs-12" ng-model="customer.Name">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="email" name="middle-name" ng-model="customer.Email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div id="gender" class="btn-group" data-toggle="buttons">
+                            <label><input type="radio" name="test" ng-model="customer.Gender" value="Male"/> Male</label>
+                            <label><input type="radio" name="test" ng-model="customer.Gender" value="Female"/> Female</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Address
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="last-name" name="last-name" class="form-control col-md-7 col-xs-12" ng-model="customer.Address"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Zip Code</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="customer.Zip">
+                        </div>
+
+                      </div>
+                      <div class="form-group" ng-show="Referel">
+                      <label class="control-label col-md-3 " for="first-name">Refered By
+                      </label>
+                      <div class="col-md-6" ng-controller="myCtrl as ctrl" layout="column" ng-cloak>
+                      <!-- <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="billing.ReferedBy" > -->
+
+                      <md-content layout-padding layout="column">
+                        <form ng-submit="$event.preventDefault()">
+                          <md-autocomplete
+                              ng-disabled="ctrl.isDisabled"
+                              md-no-cache="ctrl.noCache"
+                              md-selected-item="ctrl.selectedItem"
+                              md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                              md-search-text="ctrl.searchText"
+                              md-selected-item-change="ctrl.selectedItemChange(item)"
+                              md-items="item in ctrl.repos"
+                              md-item-text="item.Name"
+                              md-min-length="0"
+                              placeholder="Who Refered ?"
+                              md-menu-class="autocomplete-custom-template">
+                            <md-item-template>
+                              <span class="item-title">
+
+                                <span> {{item.Name}} </span>
+                              </span>
+                              <span class="item-metadata">
+                                <span class="item-metastat">
+                                  &nbsp;&nbsp;
+                                Mobile:  <strong>{{item.Mobile}}</strong>
+                                </span>
+                                <span class="item-metastat">
+                                  &nbsp;&nbsp;
+                                Email:  <strong>{{item.Email}}</strong>
+                                </span>
+                              </span>
+                            </md-item-template>
+                          </md-autocomplete>
+                        </form>
+                      </md-content>
+
+
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-9">
+                          <button class="btn btn-primary"  style="float:right" ng-click="QuickSave();">Quick Save</button>
+                        </div>
+
+                      </div>
+
+
+
+
+                    </form>
+
+                  </div>
+
+
+
+                  <div id="step-2" class="form1dd">
+                    <h2 class="StepTitle">&nbsp;</h2>
+                    <div class="container">
+
+                      <div class="alert alert-danger"  id="Step2Validation" style="display:none;text-align:center;">
+                      <strong id="Step2Error"></strong>
+                      </div>
+
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="productMenu">Cakes</a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-2">
+                <button class="btn btn-primary" ng-click="CakeOrderModal()">Add Order</button>
+              </div>
+            </div>
+            <br><br>
+            <div class="row">
+              <div class="col-md-12">
+
+                <div  ui-grid="CakeOrderGrid" ui-grid-cellnav ui-grid-pinning ui-grid-edit class="grid"  ></div>
+                <br><br><br>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="productMenu">Brownies</a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+          <h3>Under progress!!!</h3>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="productMenu">Cup Cakes</a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+          <h3>Under progress!!!</h3>
+          </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="productMenu">Chocolates</a>
+          </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+          <div class="panel-body">
+    <h3>Under progress!!!</h3>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+</div>
+
+
+
+<div id="step-3" class="form1dd">
+  <form class="form-horizontal form-label-left" style="min-height: 200px;" >
+  <h2 class="StepTitle">&nbsp;</h2>
+  <div class="container">
+
+    <div class="alert alert-danger"  id="Step3Validation" style="display:none;text-align:center;">
+    <strong id="Step3Error"></strong>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Delivery Type <span class="required">*</span>
+      </label>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div id="gender" class="btn-group" data-toggle="buttons" style="margin-top:6px;">
+          <label style="margin-left:18px;margin-right:30px;"><input type="radio" name="test" ng-model="billing.DeliveryType" ng-click="GetRadioValue()" value="DoorDelivery"/> Door Delivery</label>
+          <label><input type="radio" name="test" ng-model="billing.DeliveryType" ng-click="GetRadioValue()" value="PickUp"/> Pick Up</label>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div ng-show="Door">
+
+    <div class="form-group">
+      <label class="control-label col-md-3" for="last-name">Delivery Date <span class="required">*</span>
+      </label>
+      <div class="col-md-4">
+        <input type="date" id="first-name" required="required" class="form-control col-md-6 col-xs-12" ng-model="billing.DeliveryDate">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-3" for="last-name">Delivery Address <span class="required">*</span>
+      </label>
+      <div class="col-md-4">
+
+        <select class="select2_single form-control" tabindex="-1" ng-model="demoTest.SelectedDeliveryAddress" ng-show="ExistingDeliveryAddress">
+              <option ng-repeat="x in DeliveryAddress" value="{{x.CustomerId}}">{{x.DeliveryAddress}}</option>
+        </select>
+
+        <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="demoTest.DeliveryAddress" ng-show="NewDeliveryAddress"></textarea>
+      </div>
+      <div class="col-md-2"><button class="btn btn-info" ng-click="SetDeliveryAddress()" ng-show="ExistingDeliveryAddress">Add New</button></div>
+
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-3" for="last-name">Delivery Charge
+      </label>
+      <div class="col-md-4">
+        <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="billing.DeliveryCharge">
+      </div>
+    </div>
+    </div>
+
+    <div class="form-group" ng-show="Pick">
+    <label class="control-label col-md-3" for="last-name">Pick-Up Date <span class="required">*</span>
+    </label>
+    <div class="col-md-4">
+      <input type="date" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="billing.PickUpDate">
+    </div>
+    </div>
+
+
+
+
+
+</div>
+</form>
+</div>
+
+
+
+                <div id="step-4" style="min-height:700px;" class="form1dd">
+
+                  <div class="" role="main">
+
+                    <div class="">
+
+                      <div class="clearfix"></div>
+
+                      <div class="alert alert-success"  id="OrderSuccess" style="display:none;text-align:center;">
+                      <strong id="SuccessOrderMessage"></strong>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="x_panel">
+                            <div class="x_title">
+                              <h2>Order Summary </h2>
+
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                              <section class="content Summary">
+                                <!-- title row -->
+                                <div class="row">
+                                  <div class="col-xs-12 Summary-header">
+                                    <h1>
+                                                    <i class="fa fa-globe"></i> Summary.
+                                                    <!-- <small class="pull-right">Date: {{billing.OrderDate}}</small> -->
+                                                </h1>
+                                  </div>
+                                  <!-- /.col -->
+                                </div>
+                                <!-- info row -->
+                                <div class="row Summary-info">
+                                  <div class="col-sm-4 Summary-col">
+                                    From
+                                    <address>
+                                                    <strong>Deliciaso</strong>
+                                                    <br>Address line 1
+                                                    <br>Address line 2
+                                                    <br>Phone: 1 (804) 123-9876
+                                                    <br>Email: deliciaso@gmail.com
+                                                </address>
+                                  </div>
+                                  <!-- /.col -->
+                                  <div class="col-sm-4 Summary-col">
+                                    To
+                                    <address>
+                                                    <strong>{{customer.Name}}</strong>
+                                                    <br>{{customer.Address}}
+                                                    <br>{{customer.Zip}}
+                                                    <br>Phone:{{customer.Mobile}}
+                                                    <br>Email:{{customer.Email}}
+                                                </address>
+                                  </div>
+                                  <!-- /.col -->
+                                  <div class="col-sm-4 Summary-col" ng-show="InvoiceDelivery">
+                                    <b>Delivery Details</b>
+                                    <br>
+                                    <br>
+                                    <b>Delivery Type:</b> {{billing.DeliveryType}}
+                                    <br>
+                                    <b>Delivery Date:</b> {{billing.DeliveryDate}}
+                                    <br>
+                                    <b>Delivery Address:</b> {{delivery.DeliveryAddress}}
+                                  </div>
+                                  <div class="col-sm-4 Summary-col" ng-show="InvoicePickUp">
+                                    <b>Pick Up Details</b>
+                                    <br>
+                                    <br>
+                                    <b>Delivery Type:</b> {{billing.DeliveryType}}
+                                    <br>
+                                    <b>Pick-Up Date:</b> {{billing.PickUpDate}}
+
+                                  </div>
+                                  <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+
+                                <!-- Table row -->
+                                <div class="row">
+                                  <div class="col-xs-12 table">
+                                    <table class="table table-striped">
+                                      <thead>
+                                        <tr>
+                                          <th>Qty</th>
+                                          <th>Product</th>
+                                          <th>Size</th>
+                                          <th>Type</th>
+                                          <th>Subtotal</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr ng-repeat="Cake in ShowCart">
+                                          <td>{{Cake.Quantity}}</td>
+                                          <td>{{Cake.CakeName}}</td>
+                                          <td>{{Cake.Size}}</td>
+                                          <td>{{Cake.Type}}</td>
+                                          <td>{{Cake.Amount}}</td>
+                                        </tr>
+                                        <tr ng-repeat="Brownie in ShowBrownieCart">
+                                          <td>{{Brownie.Quantity}}</td>
+                                          <td>{{Brownie.Name}}</td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+
+
+
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                  <!-- accepted payments column -->
+                                  <div class="col-xs-6">
+
+                                  </div>
+                                  <!-- /.col -->
+                                  <div class="col-xs-6">
+                                    <p class="lead">Amount Details</p>
+                                    <div class="table-responsive">
+                                      <table class="table">
+                                        <tbody>
+                                          <tr>
+                                            <th style="width:50%">Subtotal:</th>
+                                            <td>Rs.{{billing.Amount}}</td>
+                                          </tr>
+
+                                          <tr>
+                                            <th>Shipping:</th>
+                                            <td>Rs.{{billing.DeliveryCharge}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th>Total:</th>
+                                            <td>Rs.{{ billing.Amount -- billing.DeliveryCharge }}</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+
+                                <!-- this row will not appear when printing -->
+                                <div class="row no-print">
+                                  <div class="col-xs-12">
+
+                                    <button class="btn btn-primary" ng-click="PlaceOrder()" style="float:right;"><i class="fa fa-thumbs-up"></i>Confirm Order</button>
+
+                                  </div>
+                                </div>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <!-- /page content -->
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <!-- End SmartWizard Content -->
+
+
+
+
+
+
+                <!-- Tabs -->
+
+
+                <!-- End SmartWizard Content -->
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+      <!-- /page content -->
+
+    </div>
+
+  </div>
+
+  <div id="custom_notifications" class="custom-notifications dsp_none">
+    <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
+    </ul>
+    <div class="clearfix"></div>
+    <div id="notif-group" class="tabbed_notifications"></div>
+  </div>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="js/custom.js"></script>
+    <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Smart Wizard
+        $('#wizard').smartWizard({
+
+        onLeaveStep:leaveAStepCallback,
+        reverseButtonsOrder: true
+
+            });
+
+      });
+      function leaveAStepCallback(obj, context)
+      {
+        if (context.fromStep > context.toStep) {
+
+          // alert("Leaving step " + context.fromStep + " to go to step " + context.toStep+" GOING back");
+          return validateStepsBack(context.fromStep); // return false to stay on step and true to continue navigatio
+
+       } else {
+        //  alert("Leaving step " + context.fromStep + " to go to step " + context.toStep+" GOING forward");
+         return validateSteps(context.fromStep); // return false to stay on step and true to continue navigatio
+       }
+      }
+
+
+              function validateSteps(stepnumber){
+              var isStepValid;
+              $('#Step1Error').html('');
+                  if(stepnumber == 1){
+                  var data = $('[ng-controller="myCtrl"]').scope().customer;
+
+                  $.ajax({
+                  url: '/ValidateStep1',
+                  type: "post",
+                  data: data,
+                  async:false,
+                  success: function(response){
+                  if(response)
+                  {
+                  isStepValid = false;
+
+                  // alert(response[0].msg);
+
+                  $('#Step1Validation').show(1000).delay(2000).hide(1000);;
+                  $('#Step1Error').html(response[0].msg);
+
+                  }
+                  else {
+                    if(data.Mobile[0]=="9" || data.Mobile[0]=="8"||data.Mobile[0]=="7")
+                    {
+                      var Name = data.Name;
+                      if(Name.match(/^[a-zA-Z\s.]+$/))
+                      {
+                        if(Name.length>=3)
+                        {
+                          isStepValid = true;
+                        }
+                        else {
+                          $('#Step1Validation').show(1000).delay(2000).hide(1000);;
+                          $('#Step1Error').html("Customer name should have minimum ");
+                        }
+
+                      }
+                      else {
+                        $('#Step1Validation').show(1000).delay(2000).hide(1000);;
+                        $('#Step1Error').html("Special characters are not allowed for customer name.");
+                      }
+
+                    }
+                    else
+                    {
+                      $('#Step1Validation').show(1000).delay(2000).hide(1000);;
+                      $('#Step1Error').html("Invalid Mobile number");
+                    }
+
+                  }
+                  }
+                  });
+                  return isStepValid;
+                  }
+
+
+                          else if(stepnumber == 2)
+                          {
+                              $('#Step2Error').html('');
+
+                            var isStepValid;
+                            var NullCount=0;
+                            var CakeData = $('[ng-controller="myCtrl"]').scope().ShowCart;
+                            console.log(CakeData);
+                            if(CakeData.length!=0)
+                            {
+                              for(var i=0;i<CakeData.length;i++)
+                              {
+                                if(CakeData[i].CakeName!="" && CakeData[i].Type!=""&&CakeData[i].Shape!="" &&CakeData[i].Amount!="")
+                                {
+                                  NullCount=0;
+                                }
+                                else
+                                {
+                                  NullCount++;
+                                }
+                              }
+                              if(NullCount==0)
+                              {
+                                isStepValid = true;
+                                return isStepValid;
+                              }
+                              else {
+
+                                $('#Step2Validation').show(1000).delay(2000).hide(1000);;
+                                $('#Step2Error').html("Fill all mandatory fields");
+
+                                isStepValid=false;
+                                return isStepValid;
+                              }
+                            }
+                            else
+                            {
+                              $('#Step2Validation').show(1000).delay(2000).hide(1000);;
+                              $('#Step2Error').html("Select the product for going forward.");
+                              isStepValid=false;
+                              return isStepValid;
+                            }
+
+                            return isStepValid;
+                          }
+
+                                    else if (stepnumber==3) {
+                                      $('#Step3Error').html('');
+
+                                      var DeliveryDetails = $('[ng-controller="myCtrl"]').scope().billing;
+                                      if(DeliveryDetails.DeliveryType!=undefined && DeliveryDetails.DeliveryType!="")
+                                      {
+                                            if(DeliveryDetails.DeliveryType == "DoorDelivery")
+                                            {
+                                            var DeliveryAddress = $('[ng-controller="myCtrl"]').scope().demoTest;
+                                             console.log(DeliveryDetails);
+                                             console.log(DeliveryAddress);
+
+                                            if(DeliveryDetails.DeliveryDate!=undefined &&DeliveryDetails.DeliveryDate!="")
+                                            {
+                                              if(DeliveryAddress!=undefined)
+                                              {
+                                                if(DeliveryAddress.SelectedDeliveryAddress!=undefined)
+                                                {
+                                                    if(DeliveryAddress.SelectedDeliveryAddress!="")
+                                                    {
+                                                      isStepValid =true;
+                                                      return isStepValid;
+                                                    }
+                                                    else{
+                                                    isStepValid =true;
+                                                    return isStepValid;
+
+                                                    $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                                    $('#Step3Error').html("Select Delivery Address.");
+
+                                                    }
+                                                }
+
+                                                else if (DeliveryAddress.DeliveryAddress)
+                                                {
+                                                    if(DeliveryAddress.DeliveryAddress!="")
+                                                    {
+                                                      isStepValid =true;
+                                                      return isStepValid;
+                                                    }
+                                                    else {
+                                                      $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                                      $('#Step3Error').html("Delivery address required.");
+
+                                                    }
+                                                }
+                                                else {
+                                                  $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                                  $('#Step3Error').html("Delivery address required.");
+                                                }
+                                              }
+                                              else {
+                                                $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                                $('#Step3Error').html("Delivery address required.");
+
+                                              }
+
+                                            }
+                                            else {
+                                              $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                              $('#Step3Error').html("Delivery Date  required.");
+                                            }
+
+
+                                            }
+
+
+                                            else {
+                                              if(DeliveryDetails.PickUpDate!=undefined && DeliveryDetails.PickUpDate!="")
+                                              {
+                                                isStepValid=true;
+                                                return isStepValid;
+                                              }
+                                              else
+                                              {
+                                                $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                                $('#Step3Error').html("Pick up date required.");
+
+                                              }
+                                            }
+                                      }
+                                      else {
+                                        $('#Step3Validation').show(1000).delay(2000).hide(1000);;
+                                        $('#Step3Error').html("Delivery Type required.");
+                                      }
+                                    }
+              }
+
+
+              function validateStepsBack(step)
+              {
+              var isStepValid = true;
+              return isStepValid;
+              }
+
+    </script>
+  <!-- pace -->
+  <script src="js/pace/pace.min.js"></script>
+
+
+  <script>
+  var app = angular.module('myApp', ['ui.grid', 'ui.grid.edit','ui.grid.pinning','ui.grid.cellNav','ngMaterial']);
+  app.controller('myCtrl', function($scope,$http,$timeout, $q, $log) {
+
+    localStorage.setItem('ReferedBy', "");
+
+
+    $scope.search = function(mobile){
+
+      var mobile = $scope.customer.Mobile;
+      $http.get('/' + mobile).success(function(response){
+        console.log(response);
+        if(response !=null && response!="")
+        {
+          $scope.Referel = false;
+          $scope.customer = response["Customer"][0];
+           $scope.DeliveryAddress = response["DeliveryAddress"];
+          $scope.cakeorders = response["LastCakeOrders"];
+        }
+        else
+        {
+          $scope.Referel = true;
+
+          $scope.customer.Name ="";
+          $scope.customer.Gender ="";
+          $scope.customer.Email ="";
+          $scope.customer.Address ="";
+          $scope.customer.Zip ="";
+          $scope.customer.Id ="";
+
+          console.log("No data available with this mobile number.")
+        }
+
+    });
+  };
+
+
+
+
+$scope.CakeOrderModal = function(){
+  $('#MakeCakeOrder').modal('show');
+};
+$scope.BrownieOrderModal = function(){
+  $('#MakeBrownieOrder').modal('show');
+};
+$scope.CupCakeOrderModal = function(){
+  $('#MakeCakeOrder').modal('show');
+};
+$scope.ChocolatesOrderModal = function(){
+  $('#MakeCakeOrder').modal('show');
+};
+$scope.ShowCart =[];
+
+
+
+$scope.SaveCakeOrder = function(){
+
+
+  if($scope.AddCake!=undefined)
+  {
+      $http.post('/ValidateCakeOrder',$scope.AddCake).success(function(response){
+        console.log(response);
+        if(response)
+        {
+
+          $('#CakeOrderValidation').show(1000).delay(2000).hide(1000);;
+          $('#CakeOrderError').html(response[0].msg);
+        }
+        else
+        {
+
+          $scope.ShowCart.push($scope.AddCake);
+
+          $('#MakeCakeOrder').modal('hide');
+          $scope.AddCake="";
+          console.log($scope.ShowCart);
+        }
+      });
+
+  }
+  else
+  {
+    alert("Empty");
+  }
+
+};
+
+
+$scope.ShowBrownieCart =[];
+$scope.SaveBrownieOrder = function(){
+$scope.ShowBrownieCart.push($scope.AddBrownie);
+$('#MakeBrownieOrder').modal('hide');
+$scope.AddBrownie="";
+console.log($scope.ShowBrownieCart);
+};
+
+    $scope.CakeOrderGrid = {
+        data: 'ShowCart',
+        enableCellEditOnFocus: true,
+        columnDefs: [{field:'CakeName', displayName:'Cake Name',width:100,pinnedLeft:true},
+    {field:'Quantity', displayName:'Quantity',width:100},
+    {field:'Shape', displayName:'Shape',width:100},
+    {field:'Size', displayName:'Size',width:100},
+    {field:'Type', displayName:'Type',width:100},
+    {field:'Amount', displayName:'Amount',width:100},
+    {field:'Message', displayName:'Message',width:100},
+    {field:'Occasion', displayName:'Occasion',width:100},
+    {field:'DecorationInstr', displayName:'Decoration Instruction',width:200},
+    {field:'IngredientInstr', displayName:'Ingredient Instruction',width:200},
+    {field:'Comments', displayName:'Comments',width:100},
+{field:'Id', cellTemplate: '<span class="fa fa-close" style="cursor:pointer;margin-left: 20px;" ng-click="grid.appScope.deleteRow(row)"></span>',displayName:'Action',width:80,enableFiltering: false,pinnedRight:true,enableCellEditOnFocus:false}]
+
+    };
+
+
+    $scope.deleteRow = function(row) {
+        var index = $scope.ShowCart.indexOf(row.entity);
+        $scope.ShowCart.splice(index, 1);
+      };
+
+
+      $scope.GetRadioValue = function(){
+
+        $scope.billing.Amount =0;
+        for (var i=0;i<($scope.ShowCart).length;i++)
+        {
+          $scope.billing.Amount = $scope.billing.Amount+$scope.ShowCart[i].Amount;
+        }
+
+          if($scope.billing.DeliveryType == "DoorDelivery")
+          {
+          $scope.Door = true;
+          $scope.InvoiceDelivery =true;
+          $scope.Pick = false;
+          $scope.InvoicePickUp= false;
+                if($scope.DeliveryAddress =="" || $scope.DeliveryAddress==null)
+                {
+                  $scope.ExistingDeliveryAddress = false;
+                  $scope.NewDeliveryAddress = true;
+                }
+                else {
+                  $scope.ExistingDeliveryAddress = true;
+                  $scope.NewDeliveryAddress = false;
+                }
+
+          }
+          else
+          {
+          $scope.Pick = true;
+          $scope.InvoicePickUp =true;
+          $scope.Door = false;
+          $scope.InvoiceDelivery =false;
+
+          }
+};
+$scope.QuickSave = function(){
+
+  $http.post('/ValidateQuickSave',$scope.customer).success(function(response){
+    console.log(response);
+    if(response)
+    {
+      $('#Step1Validation').show(1000).delay(2000).hide(1000);;
+      $('#Step1Error').html(response[0].msg);
+    }
+    else {
+        $http.post('/QuickSave',$scope.customer).success(function(response){
+      console.log(response);
+      if(response)
+      {
+        $('#QuickSaveSuccess').show(1000).delay(2000).hide(1000);;
+        $('#QuickSaveSuccessMessage').html("Customer details saved successfully!");
+      }
+      else {
+        $('#Step1Validation').show(1000).delay(2000).hide(1000);;
+        $('#Step1Error').html("Not possible to do now! sorry for the inconvenience.");
+      }
+        });
+    }
+  });
+
+
+
+};
+
+$scope.PlaceOrder = function(){
+    $scope.FinalAddress="";
+    $scope.ReferedByData = localStorage.getItem('ReferedBy');
+
+    if($scope.ReferedByData!=""&& $scope.ReferedByData!=null)
+    {
+      $scope.ReferedBy = JSON.parse($scope.ReferedByData);
+
+      if($scope.ReferedBy!="" && $scope.ReferedBy!=null)
+      {
+        $scope.customer.ReferedBy = $scope.ReferedBy.Id;
+      }
+    }
+
+
+
+    if($scope.billing.DeliveryType == "DoorDelivery")
+    {
+      if(!$scope.demoTest.DeliveryAddress)
+      {
+
+        $scope.billing.DeliveryAddressId = $scope.demoTest.SelectedDeliveryAddress;
+        var Data = {"cust":$scope.customer,"Cake":$scope.ShowCart,"FinalDeliveryAddress":$scope.FinalAddress,"Billing":$scope.billing};
+      }
+      else
+      {
+        var Data = {"cust":$scope.customer,"Cake":$scope.ShowCart,"Billing":$scope.billing,"NewDeliveryAddress":$scope.demoTest.DeliveryAddress};
+      }
+    }
+    else
+     {
+       var Data = {"cust":$scope.customer,"Cake":$scope.ShowCart,"Billing":$scope.billing};
+    }
+
+  $http.post('/PlaceOrder',Data).success(function(response){
+
+    if(response)
+    {
+      $('#OrderSuccess').show(1000).delay(2000).hide(1000);;
+      $('#SuccessOrderMessage').html("Order placed successfully!");
+
+          setTimeout(function(){
+          window.location.reload(1);
+          }, 7000);
+    // alert("Order placed successfully!");
+    //   window.location.reload();
+    }
+    else
+    {
+      $('#AlertSuccess').html("Something went wrong!").show(0).delay(4000).hide(1000);
+    }
+  });
+};
+
+$scope.SetDeliveryAddress = function(){
+
+  $scope.ExistingDeliveryAddress =false;
+  $scope.NewDeliveryAddress = true;
+
+};
+
+
+
+
+var self = this;
+self.simulateQuery = false;
+self.isDisabled    = false;
+self.repos         = [];
+self.querySearch   = querySearch;
+self.selectedItemChange = selectedItemChange;
+self.searchTextChange   = searchTextChange;
+
+function querySearch (query) {
+ var results = query ? self.repos.filter( createFilterFor(query) ) : self.repos,
+     deferred;
+ if (self.simulateQuery) {
+   deferred = $q.defer();
+   $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+   return deferred.promise;
+ } else {
+   return results;
+ }
+}
+function searchTextChange(text) {
+ $log.info('Text changed to ' + text);
+ $http.get('/GetReferedByData/' + text).success(function(response){
+   self.repos = response;
+console.log(response);
+ });
+}
+function selectedItemChange(item) {
+
+ $log.info('Item changed to ' + JSON.stringify(item));
+ localStorage.setItem('ReferedBy', JSON.stringify(item));
+
+
+}
+
+
+
+  });
+
+
+
+  </script>
+
+
+  <!-- /footer content -->
+</body>
+
+<div class="modal fade" id="MakeCakeOrder" role="dialog" style="display:none;top:-27px;">
+    <div class="modal-dialog" style="width: 70%;">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Order</h4>
+        </div>
+        <div class="modal-body">
+          <form  class="form-horizontal form-label-left" style="min-height: 400px;" novalidate>
+
+            <div class="alert alert-danger"  id="CakeOrderValidation" style="display:none;text-align:center;">
+            <strong id="CakeOrderError"></strong>
+            </div>
+
+            <div ng-form name="myForm">
+            <div class="row" >
+              <div class="col-md-6">
+                <div class="form-group" >
+                  <label class="control-label col-md-4 " for="last-name">Cake Flavour*
+                  </label>
+                  <div class="col-md-8">
+                    <input type="text"  name="CakeName"  class="form-control col-md-7 col-xs-12" ng-model="AddCake.CakeName" >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4" for="first-name">Size (kg)
+                  </label>
+                  <div class="col-md-8">
+                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.Size">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4" for="first-name">Quantity
+                  </label>
+                  <div class="col-md-8">
+                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.Quantity">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4 col-sm-4 col-xs-12">Type*</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <!-- <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Type"> -->
+                    <select class="select2_single form-control" tabindex="-1" ng-model="AddCake.Type" ng-click="SetDiscount()">
+                                              <option value="Celebration">Celebration</option>
+                                              <option value="Tea Time">Tea Time</option>
+                    </select>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4 col-sm-3 col-xs-12">Shape*</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Shape">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4 col-sm-4 col-xs-12" for="last-name">Occasion
+                  </label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Occasion">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4 col-sm-4 col-xs-12" for="last-name">Message on cake*
+                  </label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Message">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Decoration Instruction</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.DecorationInstr"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Ingredient Instruction </label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.IngredientInstr"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label col-md-4 col-sm-4 col-xs-12">Comments</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.Comments"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Amount* </label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="number" name="middle-name" ng-model="AddCake.Amount">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+            </div>
+
+
+
+          </div>
+        </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">Close</button>
+          <button type="button" class="btn btn-primary"  style="float:right;" ng-click="SaveCakeOrder()">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="MakeBrownieOrder" role="dialog" style="display:none;top:-27px;">
+      <div class="modal-dialog" style="width: 40%;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add Order</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal form-label-left" style="min-height: 400px;">
+
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3 " for="last-name">Name
+                    </label>
+                    <div class="col-md-6">
+                      <input type="text" id="mobile" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddBrownie.Name">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Quantity</label>
+                    <div class="col-md-6">
+                      <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddBrownie.Quantity">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount</label>
+                    <div class="col-md-6">
+                      <input id="middle-name" class="form-control col-md-7 col-xs-12" type="number" name="middle-name" ng-model="AddBrownie.Amount">
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Order Date</label>
+                    <div class="col-md-6">
+                      <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date"  name="middle-name" ng-model="AddBrownie.OrderDate">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="middle-name" class="control-label col-md-3">Delivery Date </label>
+                    <div class="col-md-6">
+                      <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="middle-name" ng-model="AddBrownie.DeliveryDate">
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <label for="middle-name" class="control-label col-md-3">Ingredient Instruction </label>
+                    <div class="col-md-6">
+                      <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddBrownie.IngredientInstr"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Comments</label>
+                    <div class="col-md-6">
+                      <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddBrownie.Comments"></textarea>
+                    </div>
+                  </div>
+
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" style="float:right;" ng-click="SaveBrownieOrder()">Save</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp"ng-controller="myCtrl">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Deliciaso | </title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom styling plus plugins -->
+  <link href="css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.3.css" />
+  <link href="css/icheck/flat/green.css" rel="stylesheet" />
+  <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="js/jquery.min.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script src="js/nprogress.js"></script>
+  <script src="js/validator/validator.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+
+</script>
+
+</head>
+
+
+<body class="nav-md">
+
+  <div class="container body">
+
+
+    <div class="main_container">
+
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Deliciaso</span></a>
+          </div>
+          <div class="clearfix"></div>
+
+          <!-- menu prile quick info -->
+          <div class="profile">
+            <div class="profile_pic">
+              <img src="images/avatar.ico" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <h2>Admin</h2>
+            </div>
+          </div>
+          <!-- /menu prile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+            <div class="menu_section">
+              <h3>&nbsp;</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="/">New Order</a>
+                    </li>
+                    <li><a href="/manageorders">Manage Orders</a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+
+        <div class="nav_menu">
+          <nav class="" role="navigation">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/avatar.ico" alt="">Admin
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                  <li><a href="javascript:;">  Profile</a>
+                  </li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+      <!-- /top navigation -->
+
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+
+        <!-- top tiles -->
+        <div class="row tile_count">
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Total Customers</span>
+              <div class="count">2500</div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-clock-o"></i>Total Cakes Sold</span>
+              <div class="count">123.50</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Completed Payments</span>
+              <div class="count green">2,500</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Due Payments</span>
+              <div class="count">4,567</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
+              <div class="count">22,315</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+              <span class="count_top"><i class="fa fa-user"></i> Today`s Collection</span>
+              <div class="count">7,325</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+          </div>
+
+        </div>
+        <!-- /top tiles -->
+        <br /><br />
+
+        <div class="alert alert-success" style="display:none;" id="AlertSuccess">
+          <strong style="text-align:center;">No Data Available</strong>
+        </div>
+        <!-- <div class="row" id="MyCarousel" style="display:none;">
+          <div class="col-md-4">&nbsp;</div>
+          <div class="col-md-4">
+
+
+            <div id="MyCarousel" class="cycle-slideshow composite-example"
+                data-cycle-fx="scrollHorz"
+                data-cycle-slides="> div"
+                data-cycle-timeout="2000"
+                >
+
+    <div ng-repeat = "sliders in carousel">
+        <img src="images/cake.jpg" width=100%>
+        <div class="cycle-overlay">{{sliders.cakename}}</div>
+    </div>
+
+</div>
+        </div>
+        <div class="col-md-4">&nbsp;</div>
+      </div> -->
+
+        <!-- <div class="row">
+          <div class="col-md-4">&nbsp;</div>
+
+
+              <div class="col-md-4" >
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Enter Mobile Number" ng-model="contact.mobile" id="InputMobile">
+                      <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary" ng-click="search(contact.mobile)">Go!</button>
+                      </span>
+                  </div>
+
+              </div>
+          <div class="col-md-4">&nbsp;</div>
+        </div> -->
+
+        <!-- <div class="row" style="display:none;" id="CustDetails" >
+          <div class="col-md-4">&nbsp;</div>
+          <div class="col-md-4 animated fadeInDown">
+            <div class="well profile_view">
+              <div class="col-sm-12">
+                <h4 class="brief">Last Order Summary</h4>
+                <div class="left col-xs-7">
+                  <h2>{{box.name}}</h2>
+                  <p><strong>Cake: </strong><span >{{box.cakename}}</span>  </p>
+                  <p><strong>Amount:</strong> Rs.<span >{{box.amount}}</span></p>
+                  <p><strong>Order Date:</strong> <span >{{box.orderdate}}</span> </p>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-phone"></i> Mobile: <span >{{box.mobile}}</span></li>
+                    <li><i class="fa fa-envelope"></i> Email: <span>{{box.email}}</span></li>
+
+                  </ul>
+                </div>
+                <div class="right col-xs-5 text-center">
+                  <img src="images/cake.jpg" alt="" class="img-circle img-responsive">
+                  &nbsp;
+                </div>
+              </div>
+              <div class="col-xs-12 bottom text-center" style="margin-top: 0px;">
+                <div class="col-xs-12 col-sm-6 emphasis">
+                  <button type="button" class="btn btn-primary btn-xs" ng-click="clear()"> <i class="fa fa-remove">
+                  </i> Clear </button>
+                </div>
+                <div class="col-xs-12 col-sm-6 emphasis">
+
+                  <button type="button" class="btn btn-primary btn-xs" ng-click="ExistingCustOrder();"> <i class="fa fa-user">
+                                                  </i> Make New Order </button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-4">&nbsp;</div>
+        </div> -->
+
+        <!-- <div class="row" style="display:none;" id="CustNotExist" >
+          <div class="col-md-4">&nbsp;</div>
+          <div class="col-md-4 animated fadeInDown">
+            <div class="well profile_view">
+              <div class="col-sm-12">
+                <h4 class="brief"><i>Oops! No customer exist!</i></h4>
+                <div class="left col-xs-7">
+
+
+                </div>
+
+              </div>
+              <div class="col-xs-12 bottom text-center" style="margin-top: 0px;">
+                <div class="col-xs-12 col-sm-6 emphasis">
+                  <button type="button" class="btn btn-primary btn-xs" ng-click="clear()"> <i class="fa fa-remove">
+                  </i> Clear </button>
+                </div>
+                <div class="col-xs-12 col-sm-6 emphasis">
+
+                  <button type="button" class="btn btn-primary btn-xs" ng-click="NewCustOrder();"> <i class="fa fa-user">
+                  </i> Make New Order </button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-4">&nbsp;</div>
+        </div> -->
+
+
+        <div class="row" id="NewOrder" >
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>Make New Order </h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+
+                <!-- Smart Wizard -->
+
+                <div id="wizard" class="form_wizard wizard_horizontal">
+                  <ul class="wizard_steps">
+                    <li>
+                      <a href="#step-1" style="text-decoration: none;">
+                        <span class="step_no">1</span>
+                        <span class="step_descr">
+                                          Customer Details<br />
+
+                                      </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#step-2" style="text-decoration: none;">
+                        <span class="step_no">2</span>
+                        <span class="step_descr">
+                                          Product Menu<br />
+
+                                      </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#step-3" style="text-decoration: none;">
+                        <span class="step_no">3</span>
+                        <span class="step_descr">
+                                          Order Summary<br />
+
+                                      </span>
+                      </a>
+                    </li>
+
+                  </ul>
+                  <div id="step-1" >
+                    <form class="form-horizontal form-label-left" style="min-height: 400px;">
+                      <h2 class="StepTitle">&nbsp;</h2>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mobile <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="OrderMobile" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="customer.Mobile" ng-blur="search()">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="customer.Name">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="email" name="middle-name" ng-model="customer.Email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div id="gender" class="btn-group" data-toggle="buttons">
+                            <label><input type="radio" name="test" ng-model="customer.Gender" value="Male"/> Male</label>
+                            <label><input type="radio" name="test" ng-model="customer.Gender" value="Female"/> Female</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="address.Address"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Zip Code</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="address.Zip">
+                        </div>
+                      </div>
+
+                    </form>
+
+                  </div>
+                  <div id="step-2">
+                    <h2 class="StepTitle">&nbsp;</h2>
+                    <div class="container">
+
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration: none;">Cakes</a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-2">
+                <button class="btn btn-primary" ng-click="CakeOrderModal()">Add Order</button>
+              </div>
+            </div>
+            <br><br>
+            <div class="row">
+              <div class="col-md-12">
+
+                <table class="table" id= "myTable">
+                  <thead>
+
+                      <th>Cake Name</th>
+                      <th>Cake Qty</th>
+                      <th>Order Date</th>
+                      <th>Delivery Date</th>
+                      <th>Amount</th>
+                      <th>Action</th>
+
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="ShowData in ShowCart">
+                      <td>{{ShowData.CakeName}}</td>
+                      <td>{{ShowData.Quantity}}</td>
+                      <td>{{ShowData.OrderDate}}</td>
+                      <td>{{ShowData.Deliverydate}}</td>
+                      <td>{{ShowData.Amount}}</td>
+                      <td><a href="#"><span class="fa fa-edit"></span><a href="#">&nbsp;&nbsp;
+                        <a href="#"><span class="fa fa-close"></span><a href="#">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="text-decoration: none;">Brownies</a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="text-decoration: none;">Cup Cakes</a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" style="text-decoration: none;">Chocolates</a>
+          </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+                  </div>
+
+                  <div id="step-3">
+                    <h3>Pending!</h3>
+                  </div>
+
+
+                </div>
+                <!-- End SmartWizard Content -->
+
+
+
+
+
+
+                <!-- Tabs -->
+
+
+                <!-- End SmartWizard Content -->
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+      <!-- /page content -->
+
+    </div>
+
+  </div>
+
+  <div id="custom_notifications" class="custom-notifications dsp_none">
+    <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
+    </ul>
+    <div class="clearfix"></div>
+    <div id="notif-group" class="tabbed_notifications"></div>
+  </div>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="js/custom.js"></script>
+    <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Smart Wizard
+        $('#wizard').smartWizard();
+
+        function onFinishCallback() {
+          $('#wizard').smartWizard('showMessage', 'Finish Clicked');
+          //alert('Finish Clicked');
+        }
+      });
+
+      $(document).ready(function() {
+        // Smart Wizard
+        $('#wizard_verticle').smartWizard({
+          transitionEffect: 'slide'
+        });
+
+      });
+    </script>
+  <!-- pace -->
+  <script src="js/pace/pace.min.js"></script>
+
+
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope,$http) {
+
+    $scope.search = function(mobile){
+
+      var mobile = $('#OrderMobile').val();
+      $http.get('/' + mobile).success(function(response){
+        console.log(response);
+        if(response !=null && response!="")
+        {
+          $scope.customer = response["Customer"][0];
+          $scope.address = response["Address"][0];
+          $scope.cakeorders = response["LastCakeOrders"];
+           $scope.cakeorders.OrderDate = new Date($scope.cakeorders.OrderdateTime);
+           $scope.cakeorders.DeliveryDate = new Date($scope.cakeorders.DeliveryDateTime);
+        }
+        else
+        {
+          $scope.contact = "";
+          console.log("No data available with this mobile number.")
+        }
+
+    });
+  };
+
+
+
+
+$scope.CakeOrderModal = function(){
+  $('#MakeCakeOrder').modal('show');
+};
+$scope.ShowCart =[];
+$scope.SaveCakeOrder = function(){
+$scope.ShowCart.push($scope.AddCake);
+    console.log($scope.ShowCart);
+};
+
+  });
+
+
+  </script>
+
+
+  <!-- /footer content -->
+</body>
+
+<div class="modal fade" id="MakeCakeOrder" role="dialog" style="display:none;top:-27px;">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Order</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal form-label-left" style="min-height: 400px;">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CakeName
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" id="mobile" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.CakeName">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Size
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.Size">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Quantity</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Quantity">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Shape</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Shape">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Type">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Message on cake
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Message">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Occassion
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Occasion">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Order Date</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="middle-name" ng-model="AddCake.OrderDate">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Delivery Date </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="middle-name" ng-model="AddCake.DeliveryDate">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="AddCake.Amount">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Decoration Instruction</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.DecorationInstr"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Ingredient Instruction </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.IngredientInstr"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Comments</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <textarea id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="AddCake.Comments"></textarea>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="float:right;" ng-click="SaveCakeOrder()">Save</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</html>
